@@ -2,43 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pocket Poetry - Updates</title>
+  <title>Title of the Poem | Pocket Poetry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Pocket Poetry - Daily Poems and Community Submissions">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Merriweather:400,400italic&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f9f8f6;
+      color: #222;
+      font-family: 'Merriweather', serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2.5em auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 18px 3px #ececec;
+      padding: 2.5em 2em;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    header nav a {
+      margin: 0 1em;
+      text-decoration: none;
+      color: #4b2e39;
+      font-weight: bold;
+    }
+    .post-title {
+      font-size: 2.6em;
+      font-family: 'Roboto Slab', serif;
+      margin-bottom: 0.3em;
+      color: #4b2e39;
+    }
+    .post-date {
+      color: #888;
+      font-size: 1.1em;
+      margin-bottom: 2em;
+    }
+    .post-content {
+      font-size: 1.1em;
+      line-height: 1.7;
+      margin-bottom: 2em;
+    }
+    footer {
+      text-align: center;
+      color: #4b2e39;
+      margin-top: 3em;
+      font-size: 1em;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Pocket Poetry</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="updates.html">Monthly Updates</a>
-      <a href="submit.html">Submit Poetry</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Monthly Updates</h2>
-    <section>
-      <!-- Example update, repeat as needed -->
-      <article>
-        <h3>September 9, 2025</h3>
-        <p>Today's featured poem: <em>Waves of Dawn</em></p>
-        <p>Share your thoughts below!</p>
-        <!-- Utterances comments widget -->
-        <div id="comments"></div>
-        <script src="https://utteranc.es/client.js"
-                repo="Ejpete10/pocket-poetry.github.io"
-                issue-term="pathname"
-                label="💬 comment"
-                theme="github-light"
-                crossorigin="anonymous"
-                async>
-        </script>
-      </article>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Pocket Poetry</p>
-  </footer>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="updates.html">Monthly Updates</a>
+        <a href="submit.html">Submit Poetry</a>
+      </nav>
+    </header>
+    <h1 class="post-title">We All Have a Plane Crash</h1>
+    <div class="post-date">June 17, 2023</div>
+    <div class="post-content">
+      <p>
+        <em>(Paste your poem or update here. You can use &lt;br&gt; for line breaks if needed.)</em>
+      </p>
+      <p>
+        Example:<br>
+        We all have a plane crash<br>
+        In the mind, in the heart—<br>
+        A moment when the world<br>
+        Fails to hold us up.
+      </p>
+    </div>
+    <!-- Comments section using Utterances (requires setup in your repo) -->
+    <div id="comments"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="Ejpete10/pocket-poetry.github.io"
+            issue-term="pathname"
+            label="💬 comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <footer>
+      &copy; 2025 Pocket Poetry
+    </footer>
+  </div>
 </body>
 </html>
