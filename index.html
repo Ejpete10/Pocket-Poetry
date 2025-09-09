@@ -3,36 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Pocket Poetry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pocket Poetry - Daily Poems and Community Submissions">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hero { text-align: center; margin: 4em 0 2em 0; }
+    .hero-title { font-size: 2.8em; font-family: 'Merriweather', serif; }
+    .hero-tagline { font-size: 1.25em; color: #666; margin-bottom: 2em; }
+    .cta { margin: 2em 0; }
+    .cta a { background: #1a5b82; color: #fff; padding: 1em 2em; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1em; }
+    .cta a:hover { background: #17496d; }
+    nav { margin-top: 2em; text-align: center; }
+    nav a { margin: 0 1em; color: #1a5b82; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Pocket Poetry</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="updates.html">Monthly Updates</a>
-      <a href="submit.html">Submit Poetry</a>
-    </nav>
-  </header>
-  <main>
-    <section class="hero">
-      <h2>Welcome to Pocket Poetry!</h2>
-      <p>Your daily dose of inspiration. Read, comment, and share your thoughts!</p>
-      <img src="poetry-hero.svg" alt="Pocket Poetry Illustration" style="max-width:240px;">
-    </section>
-    <section>
-      <h3>Latest Update</h3>
-      <div id="latest-update">
-        <!-- Markdown for latest update goes here -->
-        <p><em>See the <a href="updates.html">Monthly Updates</a> page for more!</em></p>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Pocket Poetry</p>
-  </footer>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="releases.html">Monthly Releases</a>
+    <a href="submit.html">Submit Poetry</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-title">Pocket Poetry</div>
+    <div class="hero-tagline">A place for daily poems, monthly collections, and community voices.</div>
+    <div class="cta">
+      <a href="releases.html">Explore Monthly Releases</a>
+    </div>
+  </div>
+  <!-- (Optional) Add a section here for latest/featured poems -->
 </body>
 </html>
