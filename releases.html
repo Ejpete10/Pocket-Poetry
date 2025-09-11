@@ -5,15 +5,143 @@
   <title>Monthly Releases - Pocket Poetry</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .releases-container { max-width: 600px; margin: 3em auto; }
-    .releases-title { text-align: center; font-size: 2em; margin-bottom: 1.5em; }
-    .release-section { margin-bottom: 2em; }
-    .release-list { list-style: none; padding-left: 0; }
-    .release-list li { margin: 0.5em 0; }
-    .release-link { color: #1a5b82; text-decoration: none; }
-    .release-link:hover { text-decoration: underline; }
-    select { padding: 0.5em; font-size: 1em; }
-    .hidden { display: none; }
+    body {
+      background: linear-gradient(120deg, #f6e9ff 0%, #d0e6f6 100%);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      color: #2d3d50;
+      margin: 0;
+      min-height: 100vh;
+    }
+    nav {
+      background: #6a4b89;
+      padding: 1.2em 0.5em;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(80, 54, 125, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 2em;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #e1c3fa;
+    }
+    .releases-container {
+      max-width: 680px;
+      margin: 4em auto 2em auto;
+      background: #fff6fb;
+      border-radius: 1.5em;
+      box-shadow: 0 8px 24px rgba(100, 54, 125, 0.08);
+      padding: 2.5em 2em 2em 2em;
+      min-height: 550px;
+      position: relative;
+      overflow: visible;
+    }
+    .releases-title {
+      text-align: center;
+      font-size: 2.7em;
+      font-family: 'Georgia', serif;
+      color: #6a4b89;
+      margin-bottom: 2.2em;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      text-shadow: 0 1px 0 #e6d2f5;
+    }
+    .year-selector, .month-selector {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+    }
+    .year-btn, .month-btn {
+      background: #e1c3fa;
+      color: #6a4b89;
+      border: none;
+      padding: 0.8em 1.7em;
+      border-radius: 2em;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(80,54,125,0.07);
+      transition: background 0.2s, color 0.2s, transform 0.11s;
+      outline: none;
+    }
+    .year-btn.selected, .month-btn.selected {
+      background: #6a4b89;
+      color: #fff;
+      transform: scale(1.06);
+    }
+    .year-btn:hover, .month-btn:hover:not(.selected) {
+      background: #bba0e6;
+      color: #fff;
+    }
+    .release-section {
+      margin-top: 2.2em;
+      margin-bottom: 2em;
+      background: #f9eaff;
+      border-radius: 1em;
+      padding: 1.4em 1em;
+      box-shadow: 0 2px 12px rgba(106,75,137,0.06);
+    }
+    .release-section h3 {
+      margin-top: 0.4em;
+      font-size: 1.4em;
+      color: #6a4b89;
+      font-family: 'Georgia', serif;
+    }
+    .release-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1em;
+    }
+    .release-list li {
+      margin: 0.8em 0;
+    }
+    .release-link {
+      color: #4e2070;
+      background: #e1c3fa;
+      padding: 0.6em 1.2em;
+      border-radius: 1.5em;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 1px 6px rgba(80,54,125,0.06);
+    }
+    .release-link:hover {
+      background: #6a4b89;
+      color: #fff;
+      text-decoration: underline;
+    }
+    .hidden {
+      display: none;
+    }
+    .giscus-section {
+      margin-top: 3.5em;
+      padding-top: 2em;
+      border-top: 1px solid #e1c3fa;
+      background: #faf4ff;
+      border-radius: 0 0 1.5em 1.5em;
+      box-shadow: 0 2px 12px rgba(106,75,137,0.04) inset;
+    }
+    @media (max-width: 700px) {
+      .releases-container {
+        padding: 1.1em 0.2em;
+      }
+      .releases-title {
+        font-size: 2em;
+      }
+      .year-btn, .month-btn {
+        font-size: 0.98em;
+        padding: 0.7em 1.1em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -24,67 +152,154 @@
   </nav>
   <div class="releases-container">
     <div class="releases-title">Monthly Releases</div>
-    <form id="releaseFilter">
-      <label for="yearSelect">Select Year:</label>
-      <select id="yearSelect">
-        <option value="">-- Choose Year --</option>
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <!-- Add more years as needed -->
-      </select>
-      <br><br>
-      <label for="monthSelect">Select Month:</label>
-      <select id="monthSelect" disabled>
-        <option value="">-- Choose Month --</option>
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-      </select>
-    </form>
+    
+    <div class="year-selector" id="yearSelector">
+      <!-- Years will be placed here -->
+    </div>
+    <div class="month-selector hidden" id="monthSelector">
+      <!-- Months will be placed here -->
+    </div>
+
     <div id="editionsSection" class="release-section hidden">
       <h3>Editions</h3>
       <ul class="release-list" id="editionsList">
         <!-- Editions will be listed here -->
-        <!-- Example static list item: -->
-        <!-- <li><a class="release-link" href="blog/2025-01-edition1.html">January 2025 - Edition 1</a></li> -->
       </ul>
+    </div>
+
+    <div class="giscus-section" id="giscusSection">
+      <!-- Giscus comments loaded here -->
+      <script src="https://giscus.app/client.js"
+        data-repo="Ejpete10/Pocket-Poetry"
+        data-repo-id="R_kgDOLlSStw"
+        data-category="General"
+        data-category-id="DIC_kwDOLlSSt84Cevf2"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+      </script>
     </div>
   </div>
   <script>
-    // Simple JS to enable month after year, and display example editions (static for now)
-    const yearSelect = document.getElementById('yearSelect');
-    const monthSelect = document.getElementById('monthSelect');
-    const editionsSection = document.getElementById('editionsSection');
-    const editionsList = document.getElementById('editionsList');
+    // --- CONFIGURABLE SECTION ---
+    // The years you want to display (add/remove as needed)
+    const years = ["2025", "2024"];
+    // Simulate which months have editions (for demo; replace with real data or fetch dynamically)
+    // Format: { "YYYY": ["MM", ...] }
+    const availableMonths = {
+      "2025": ["01", "02", "09"], // For example: Jan, Feb, Sept 2025
+      "2024": ["06", "07", "12"], // For example: Jun, Jul, Dec 2024
+    };
+    // Simulate available editions per (year, month) (for demo)
+    // Format: { "YYYY-MM": ["edition1", "edition2", ...] }
+    const availableEditions = {
+      "2025-01": ["edition1", "edition2"],
+      "2025-02": ["edition1"],
+      "2025-09": ["edition1", "edition2", "edition3"],
+      "2024-06": ["edition1"],
+      "2024-07": ["edition1", "edition2"],
+      "2024-12": ["edition1"],
+    };
+    // Month name lookup
+    const monthNames = {
+      "01": "January", "02": "February", "03": "March", "04": "April",
+      "05": "May", "06": "June", "07": "July", "08": "August",
+      "09": "September", "10": "October", "11": "November", "12": "December"
+    };
 
-    yearSelect.addEventListener('change', function() {
-      monthSelect.disabled = !yearSelect.value;
-      editionsSection.classList.add('hidden');
-      editionsList.innerHTML = '';
-    });
+    // --- DOM Elements ---
+    const yearSelector = document.getElementById("yearSelector");
+    const monthSelector = document.getElementById("monthSelector");
+    const editionsSection = document.getElementById("editionsSection");
+    const editionsList = document.getElementById("editionsList");
 
-    monthSelect.addEventListener('change', function() {
-      editionsList.innerHTML = '';
-      if(yearSelect.value && monthSelect.value) {
-        // Example: Add static edition links (replace with real data or generate dynamically as needed)
-        editionsList.innerHTML = `
-          <li><a class="release-link" href="blog/${yearSelect.value}-${monthSelect.value}-edition1.html">${monthSelect.options[monthSelect.selectedIndex].text} ${yearSelect.value} - Edition 1</a></li>
-          <li><a class="release-link" href="blog/${yearSelect.value}-${monthSelect.value}-edition2.html">${monthSelect.options[monthSelect.selectedIndex].text} ${yearSelect.value} - Edition 2</a></li>
-        `;
-        editionsSection.classList.remove('hidden');
-      } else {
-        editionsSection.classList.add('hidden');
+    // --- State ---
+    let selectedYear = null;
+    let selectedMonth = null;
+
+    // --- Render Years ---
+    function renderYears() {
+      yearSelector.innerHTML = "";
+      years.forEach(year => {
+        const btn = document.createElement("button");
+        btn.className = "year-btn";
+        btn.textContent = year;
+        btn.addEventListener("click", () => selectYear(year, btn));
+        yearSelector.appendChild(btn);
+      });
+    }
+
+    // --- Select Year Handler ---
+    function selectYear(year, btn) {
+      selectedYear = year;
+      selectedMonth = null;
+      // Highlight selected year
+      [...yearSelector.children].forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      // Render months for this year
+      renderMonths(year);
+      editionsSection.classList.add("hidden");
+      editionsList.innerHTML = "";
+    }
+
+    // --- Render Months for Selected Year ---
+    function renderMonths(year) {
+      monthSelector.innerHTML = "";
+      const months = availableMonths[year] || [];
+      if (months.length === 0) {
+        monthSelector.classList.add("hidden");
+        return;
       }
-    });
+      months.forEach(month => {
+        const btn = document.createElement("button");
+        btn.className = "month-btn";
+        btn.textContent = monthNames[month];
+        btn.addEventListener("click", () => selectMonth(month, btn));
+        monthSelector.appendChild(btn);
+      });
+      monthSelector.classList.remove("hidden");
+      // Unselect previous months
+      [...monthSelector.children].forEach(b => b.classList.remove("selected"));
+    }
+
+    // --- Select Month Handler ---
+    function selectMonth(month, btn) {
+      selectedMonth = month;
+      // Highlight selected month
+      [...monthSelector.children].forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      renderEditions(selectedYear, selectedMonth);
+    }
+
+    // --- Render Editions for Selected Year & Month ---
+    function renderEditions(year, month) {
+      editionsList.innerHTML = "";
+      const key = `${year}-${month}`;
+      const editions = availableEditions[key] || [];
+      if (editions.length === 0) {
+        editionsSection.classList.add("hidden");
+        return;
+      }
+      editions.forEach((edition, idx) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.className = "release-link";
+        a.href = `blog/${year}-${month}-${edition}.html`;
+        a.textContent = `${monthNames[month]} ${year} - Edition ${idx + 1}`;
+        li.appendChild(a);
+        editionsList.appendChild(li);
+      });
+      editionsSection.classList.remove("hidden");
+    }
+
+    // --- INIT ---
+    renderYears();
   </script>
 </body>
 </html>
