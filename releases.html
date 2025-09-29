@@ -189,22 +189,15 @@
   <script>
     // --- CONFIGURABLE SECTION ---
     // The years you want to display (add/remove as needed)
-    const years = ["2025", "2024"];
+    const years = ["2025"];
     // Simulate which months have editions (for demo; replace with real data or fetch dynamically)
     // Format: { "YYYY": ["MM", ...] }
-    const availableMonths = {
-      "2025": ["01", "02", "09"], // For example: Jan, Feb, Sept 2025
-      "2024": ["06", "07", "12"], // For example: Jun, Jul, Dec 2024
     };
     // Simulate available editions per (year, month) (for demo)
     // Format: { "YYYY-MM": ["edition1", "edition2", ...] }
     const availableEditions = {
-      "2025-01": ["edition1", "edition2"],
-      "2025-02": ["edition1"],
       "2025-09": ["edition1", "edition2", "edition3"],
-      "2024-06": ["edition1"],
-      "2024-07": ["edition1", "edition2"],
-      "2024-12": ["edition1"],
+      "2025-10": ["edition1", "edition2", "edition3"],
     };
     // Month name lookup
     const monthNames = {
