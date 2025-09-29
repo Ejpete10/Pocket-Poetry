@@ -179,9 +179,9 @@ const availableMonths = {
 };
     // Simulate available editions per (year, month) (for demo)
     // Format: { "YYYY-MM": ["edition1", "edition2", ...] }
-    const availableEditions = {
-      "2025-09": ["Plane Crash", "edition2", "edition3"],
-      "2025-10": ["edition1", "edition2", "edition3"],
+const availableEditions = {
+  "2025-09": ["Plane Crash", "Harvest Moon", "Ocean Eyes"],
+  "2025-10": ["Ghost Stories", "Pumpkin Patch", "Falling Leaves"],
     };
     // Month name lookup
     const monthNames = {
@@ -263,15 +263,17 @@ const availableMonths = {
         editionsSection.classList.add("hidden");
         return;
       }
-      editions.forEach((edition, idx) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.className = "release-link";
-        a.href = `blog/${year}/month/${edition}.html`;
-        a.textContent = `${monthNames[month]} ${year} - Edition ${idx + 1}`;
-        li.appendChild(a);
-        editionsList.appendChild(li);
-      });
+editions.forEach((edition) => {
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.className = "release-link";
+  // URL-safe version (replace spaces with underscores)
+  const safeTitle = edition.replace(/\s+/g, "_");
+  a.href = `blog/${year}/month/${safeTitle}.html`;
+  a.textContent = edition; // Show the poetry title!
+  li.appendChild(a);
+  editionsList.appendChild(li);
+});
       editionsSection.classList.remove("hidden");
     }
 
