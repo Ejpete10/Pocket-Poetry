@@ -254,26 +254,30 @@ const availableEditions = {
       renderEditions(selectedYear, selectedMonth);
     }
 
-    // --- Render Editions for Selected Year & Month ---
-    function renderEditions(year, month) {
-      editionsList.innerHTML = "";
-      const key = `${year}-${month}`;
-      const editions = availableEditions[key] || [];
-      if (editions.length === 0) {
-        editionsSection.classList.add("hidden");
-        return;
-      }
-editions.forEach((edition) => {
-  const li = document.createElement("li");
-  const a = document.createElement("a");
-  a.className = "release-link";
-  // URL-safe version (replace spaces with underscores)
-  const safeTitle = edition.replace(/\s+/g, "_");
-  a.href = `blog/${year}/month/${safeTitle}.html`;
-  a.textContent = edition; // Show the poetry title!
-  li.appendChild(a);
-  editionsList.appendChild(li);
-});
+// --- Render Editions for Selected Year & Month ---
+function renderEditions(year, month) {
+  editionsList.innerHTML = "";
+  const key = `${year}-${month}`;
+  const editions = availableEditions[key] || [];
+  if (editions.length === 0) {
+    editionsSection.classList.add("hidden");
+    return;
+  }
+  editions.forEach((edition) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.className = "release-link";
+    // URL-safe version (replace spaces with underscores)
+    const safeTitle = edition.replace(/\s+/g, "_");
+    // Folder format: e.g. "September 25"
+    const displayMonth = monthNames[month] + ' ' + year.slice(2); // e.g., "September 25"
+    a.href = `blog/${year}/${displayMonth}/${safeTitle}.html`;
+    a.textContent = edition; // Show the poetry title!
+    li.appendChild(a);
+    editionsList.appendChild(li);
+  });
+  editionsSection.classList.remove("hidden");
+}
       editionsSection.classList.remove("hidden");
     }
 
