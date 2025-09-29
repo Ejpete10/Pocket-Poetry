@@ -264,7 +264,7 @@
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.className = "release-link";
-        a.href = `blog/${year}-${month}-${edition}.html`;
+        a.href = `blog/${year}/month/${edition}.html`;
         a.textContent = `${monthNames[month]} ${year} - Edition ${idx + 1}`;
         li.appendChild(a);
         editionsList.appendChild(li);
